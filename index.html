@@ -1,0 +1,185 @@
+<html lang="ar">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>كيان للتسويق العقارى</title>
+    <link rel="icon" href="logo2.png" sizes="32×32">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: cente;
+            align-items: cente;
+            z-index: 50;
+        }
+        .loading-screen img {
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .sd{
+            color: red;
+        }
+        
+        @font-face {
+            font-family: '43-DecoType-Naskh-Variants';
+            src: url('43-DecoType-Naskh-Variants.woff2') format('woff2'),
+                 url('43-DecoType-Naskh-Variants.woff') format('woff'),
+                 url('43-DecoType-Naskh-Variants.ttf') format('truetype');
+        }
+
+
+        .animated-text {
+            position: relative;
+            font-size: 35px;
+            font-weight: bold;
+            color:blue;
+            animation: moveText 12s infinite;
+            font-family:"43-DecoType-Naskh-Variants";
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            25% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+
+     .py-2{
+        border-bottom: 1.05px solid white;
+     }
+
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 fade-in">
+    <!-- Loading Screen -->
+    
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <img src="ka.png" width="100" height="100">
+            <nav>
+                <ul class="hidden md:flex space-x-4">
+                    <li><a class="hover:underline" href="index.html">الرئيسية</a></li>
+                    <li><a class="hover:underline" href="review.html">اراء العملاء</a></li>
+                    <li><a class="hover:underline" href="abute.html">من نحن</a></li>
+                    <li><a class="hover:underline" href="conect.html">تواصل معنا</a></li>
+                </ul>
+                <div class="md:hidden">
+                    <button id="menu-button" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4">
+            <ul>
+                <li class="py-2"><a class="hover:underline" href="index.html">&#127968;الرئيسية</a></li>
+                <li class="py-2"><a class="hover:underline" href="abute.html">&#128712;من نحن</a></li>
+                <li class="py-2"><a class="hover:underline" href="review.html">&#128221;اراء العملاء</a></li>
+                <li class="py-2"><a class="hover:underline" href="conect.html">&#128222;تواصل معنا</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+        <!-- University Logo -->
+        <section class="my-12 text-center">
+            <img alt="" class="mx-auto mb-6 rounded-full shadow-l" height="200" src="ka.png" width="200"/>
+            <h2 class="animated-text">امتلك او اجر وحدتك الان </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105" href="#">
+                <img src="1.jpg" width="500" height="500">
+                    <h3 class="text-2xl font-bold mb-4">مصر الجديدة</h3>
+                    <h3 class="sd">باسعار تبداء من 670,000 جنيه</h3>
+                    
+                </a>
+                <a class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105" href="#">
+                    <img src="2.jpg" width="500" height="500">
+                    <h3 class="text-2xl font-bold mb-4">التجمع الخامس</h3>
+                    <h3 class="sd">باسعار تبداء من 800,000 جنيه</h3>
+                </a>
+                <a class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105" href="#">
+                    <img src="3.jpg" width="500" height="500">
+                    <h3 class="text-2xl font-bold mb-4">الاقصر</h3>
+                    <h3 class="sd">باسعار تبداء من 1,200,000 جنيه</h3>
+                </a>
+                <a class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105" href="#">
+                    <img src="4.jpg" width="500" height="500">
+                    <h3 class="text-2xl font-bold mb-4">العين السخنة</h3>
+                    <h3 class="sd">باسعار تبداء من 1,000,000 جنيه</h3>
+                </a>
+                <a class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105" href="#">
+                    <img src="5.jpg" width="500" height="500">
+                    <h3 class="text-2xl font-bold mb-4">العالمين</h3>
+                    <h3 class="sd">باسعار تبداء من 2,500,000 جنيه</h3>
+                </a>
+                <a class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105" href="#">
+                    <img src="6.jpg" width="500" height="500">
+                    <h3 class="text-2xl font-bold mb-4">الاسكندرية</h3>
+                    <h3 class="sd">باسعار تبداء من 2,300,000 جنيه</h3>
+                </a>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6">
+        <div class="container mx-auto text-center">
+            <p>© جميع الحقوق محفوظة . كيان للتسويق العقارى 2024</p>
+        </div>
+    </footer>
+
+   
+
+    <script>
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.display = 'none';
+            document.getElementById('background-music').play();
+        });
+    </script>
+</body>
+</html>

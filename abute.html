@@ -1,0 +1,164 @@
+<html lang="ar">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>كيان للتسويق العقارى</title>
+    <link rel="icon" href="logo2.png" sizes="32×32">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: cente;
+            align-items: cente;
+            z-index: 50;
+        }
+        .loading-screen img {
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .sd{
+            color: red;
+        }
+
+        .animated-text {
+            position: relative;
+            font-size: 35px;
+            font-weight: bold;
+            color:blue;
+            animation: moveText 12s infinite;
+            font-family: DecoType Naskh Variants;
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            25% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+        }
+
+        .py-2{
+        border-bottom: 1.05px solid white;
+     }
+
+
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 fade-in">
+    <!-- Loading Screen -->
+    
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-3 shadow-lg" style="position: fixed; top: 0; width:100%; z-index: 1000;">
+        <div class="container mx-auto flex justify-between items-center">
+            <img src="ka.png" width="100" height="100">
+            <nav>
+                <ul class="hidden md:flex space-x-4">
+                    <li><a class="hover:underline" href="index.html">الرئيسية</a></li>
+                    <li><a class="hover:underline" href="review.html">اراء العملاء</a></li>
+                    <li><a class="hover:underline" href="abute.html">من نحن</a></li>
+                    <li><a class="hover:underline" href="conect.html">تواصل معنا</a></li>
+                </ul>
+                <div class="md:hidden">
+                    <button id="menu-button" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4">
+            <ul>
+                <li class="py-2"><a class="hover:underline" href="index.html">&#127968;الرئيسية</a></li>
+                <li class="py-2"><a class="hover:underline" href="abute.html">&#128712;من نحن</a></li>
+                <li class="py-2"><a class="hover:underline" href="review.html">&#128221;اراء العملاء</a></li>
+                <li class="py-2"><a class="hover:underline" href="conect.html">&#128222;تواصل معنا</a></li>
+            </ul>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+        <!-- University Logo -->
+        <section class="my-12 text-center">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <img src="ka.png">
+                <h5><br><br>شركة كيان هي شركة متخصصة في التسويق العقاري، تعمل على تقديم خدمات التسويق والبيع للمشروعات العقارية المختلفة. تركز الشركة على تسويق الوحدات السكنية والتجارية من خلال استراتيجيات تسويقية مبتكرة، تشمل استخدام تقنيات حديثة للتواصل مع العملاء وزيادة الوصول إلى السوق المستهدف. تقدم كيان أيضًا استشارات عقارية وخدمات دعم للمطورين العقاريين، مما يساعد في تعزيز مبيعاتهم وتحقيق أفضل النتائج في السوق. تسعى الشركة إلى تقديم حلول متكاملة لعملائها في مجال العقارات، مما يعزز من فرص النجاح في السوق العقاري المحلي والدولي
+               </h5>
+               <img src="ka.png">
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4" style="position: fixed; bottom: 0; width:100%;">
+        <div class="container mx-auto text-center">
+            <p>© جميع الحقوق محفوظة . كيان للتسويق العقارى 2024</p>
+        </div>
+    </footer>
+
+   
+
+    <script>
+document.getElementById('menu-button').addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden'); // تبديل حالة الإخفاء والإظهار
+    event.stopPropagation(); // منع انتشار الحدث
+});
+
+document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuButton = document.getElementById('menu-button');
+    const header = document.querySelector('header'); // تحديد عنصر `header`
+    
+    // التحقق إذا كان النقر خارج القائمة والزر وأيضًا ليس على `header`
+    if (!mobileMenu.contains(event.target) && 
+        !menuButton.contains(event.target) && 
+        !header.contains(event.target)) {
+        mobileMenu.classList.add('hidden');
+    }
+});
+
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.display = 'none';
+            document.getElementById('background-music').play();
+        });
+
+        if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    </script>
+</body>
+</html>
