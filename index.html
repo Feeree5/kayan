@@ -180,6 +180,10 @@
             loadingScreen.style.display = 'none';
             document.getElementById('background-music').play();
         });
+
+        window.addEventListener('pageshow', () => {
+            document.getElementById('menu').style.display='none';
+        });
     </script>
 </body>
 </html>
