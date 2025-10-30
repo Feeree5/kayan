@@ -181,9 +181,16 @@
             document.getElementById('background-music').play();
         });
 
-        window.addEventListener('pageshow', () => {
-            document.getElementById('mobile-menu').classList.add('hidden');
-        });
+         // إخفاء القائمة مباشرة بمجرد تحميل الصفحة أو الرجوع
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenu) mobileMenu.classList.add("hidden");
+  });
+
+  window.addEventListener("pageshow", () => {
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenu) mobileMenu.classList.add("hidden");
+  });
 
     </script>
 </body>
