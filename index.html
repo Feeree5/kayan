@@ -181,9 +181,11 @@
             document.getElementById('background-music').play();
         });
 
-        window.addEventListener('pageshow', () => {
-            document.getElementById('menu').style.display='none';
-        });
+        // عند الرجوع من صفحة أخرى تقفل القائمة تلقائيًا
+window.addEventListener('pageshow', () => {
+  document.getElementById('menu').style.display = 'none';
+});
+
     </script>
 </body>
 </html>
