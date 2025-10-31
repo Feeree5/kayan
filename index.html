@@ -180,6 +180,10 @@
             loadingScreen.style.display = 'none';
             document.getElementById('background-music').play();
         });
+         // عند الرجوع من صفحة أخرى تقفل القائمة تلقائيًا
+window.addEventListener('pageshow', () => {
+  document.getElementById('mobile-menu').classList.add('hidden');
+});
 
          window.addEventListener('pageshow', e => { if (e.persisted) document.getElementById('mobile-menu')?.classList.add('hidden'); });
 
