@@ -81,7 +81,7 @@
      .py-2{
         border-bottom: 1.05px solid white;
      }
-      #mobile-menu { visibility: hidden; }
+     
  
     </style>
 </head>
@@ -182,9 +182,15 @@
             document.getElementById('background-music').play();
         });
 
-       window.addEventListener("pageshow", () => { menu.style.display = "none"; menu.offsetHeight; });
-
-
+       
+         // ✅ السطر المطلوب فقط بدون لمس باقي الكود
+    window.addEventListener('pageshow', () => {
+        const menu = document.getElementById('mobile-menu');
+        if (menu) {
+            menu.classList.add('hidden');
+            menu.style.display = 'none'; // يمنع الوميض اللحظي
+        }
+    });
 
 
     </script>
