@@ -183,14 +183,8 @@
         });
 
        
-         // ✅ السطر المطلوب فقط بدون لمس باقي الكود
-    window.addEventListener('pageshow', () => {
-        const menu = document.getElementById('mobile-menu');
-        if (menu) {
-            menu.classList.add('hidden');
-            menu.style.display = 'none'; // يمنع الوميض اللحظي
-        }
-    });
+         window.addEventListener('pageshow', () => document.getElementById('mobile-menu')?.classList.add('hidden'));
+
 
 
     </script>
