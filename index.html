@@ -81,15 +81,7 @@
      .py-2{
         border-bottom: 1.05px solid white;
      }
-
-    #mobile-menu {
-    display: none; /* يخفي القائمة فورًا أثناء التحميل */
-  }
-  
-        /* ✅ الظهور عند الضغط */
-  #mobile-menu.show {
-    display: block;
-  }
+      #mobile-menu { visibility: hidden; }
  
     </style>
 </head>
@@ -189,13 +181,8 @@
             loadingScreen.style.display = 'none';
             document.getElementById('background-music').play();
         });
-         // عند الرجوع من صفحة أخرى تقفل القائمة تلقائيًا
-window.addEventListener('pageshow', () => {
-  document.getElementById('mobile-menu').classList.add('hidden');
-});
 
-         window.addEventListener('pageshow', e => { if (e.persisted) document.getElementById('mobile-menu')?.classList.add('hidden'); });
-
+        window.addEventListener("load", ()=> document.getElementById("mobile-menu").style.visibility="visible");
 
 
 
