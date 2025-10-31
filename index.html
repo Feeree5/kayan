@@ -182,7 +182,8 @@
             document.getElementById('background-music').play();
         });
 
-        window.addEventListener("load", ()=> document.getElementById("mobile-menu").style.visibility="visible");
+       window.addEventListener("pageshow", () => { menu.style.display = "none"; menu.offsetHeight; });
+
 
 
 
