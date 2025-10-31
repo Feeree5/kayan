@@ -82,7 +82,9 @@
         border-bottom: 1.05px solid white;
      }
      
-     #mobile-menu { display: none !important; }
+     #mobile-menu { opacity: 0; transition: opacity 0.2s ease; }
+body.loaded #mobile-menu { opacity: 1; }
+
 
     </style>
 </head>
@@ -184,7 +186,8 @@
         });
 
        
-        
+        window.addEventListener("load", ()=> document.body.classList.add("loaded"));
+
 
 
 
