@@ -82,9 +82,7 @@
         border-bottom: 1.05px solid white;
      }
      
-     #mobile-menu { opacity: 0; transition: opacity 0.2s ease; }
-body.loaded #mobile-menu { opacity: 1; }
-
+     
 
     </style>
 </head>
@@ -186,7 +184,10 @@ body.loaded #mobile-menu { opacity: 1; }
         });
 
        
-        window.addEventListener("load", ()=> document.body.classList.add("loaded"));
+        window.addEventListener('pageshow', () => {
+  const m = document.getElementById('mobile-menu');
+  if (m) m.classList.add('hidden'); // استخدم فقط الكلاس hidden
+});
 
 
 
