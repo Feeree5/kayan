@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>luxor</title>
+  <link rel="icon" href="logo2.png" sizes="32×32">
+  <style>
+    body {
+      font-family: "Cairo", sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      direction: rtl;
+    }
+    h1 {
+      text-align: center;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .card {
+      width: 200px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .card-title {
+      padding: 10px;
+      font-weight: bold;
+    }
+    /* السلايدر */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+    }
+    .overlay img {
+      max-width: 90%;
+      max-height: 80%;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+    .close-btn {
+      position: absolute;
+      top: 20px; right: 30px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .caption {
+      color: white;
+      font-size: 20px;
+      text-align: center;
+    }
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .prev { left: 30px; }
+    .next { right: 30px; }
+    
+   p{
+   color:red;
+    }
+  </style>
+</head>
+<body>
+
+
+<center><p>LUXOR</<p>
+<div id="gallery" class="gallery">جارِ التحميل...</div>
+ 
+ <center><img src="ka.png" width="150px" height="=150px"><p>كيان للتسويق العقارى</p>
+<div id="overlay" class="overlay">
+  <span class="close-btn" onclick="closeOverlay()">&times;</span>
+  <span class="nav-btn prev" onclick="prevImage()">&#10094;</span>
+  <img id="overlayImg" src="">
+  <div class="caption" id="caption"></div>
+  <span class="nav-btn next" onclick="nextImage()">&#10095;</span>
+</div>
+
+<script>
+const folderId = "1RQujHSDnHtZKBmfJ8jIBJPQwArftAKy1";
+const apiKey = "AIzaSyAQSQEankdd5aGSnbcbpLfPI7hW4n082FU";
+let currentImages = [];
+let currentIndex = 0;
+
+async function listFolders() {
+  const res = await fetch(`https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents+and+mimeType='application/vnd.google-apps.folder'&fields=files(id,name)&key=${apiKey}`);
+  const data = await res.json();
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+
+  if (!data.files || data.files.length === 0) {
+    gallery.innerHTML = "<h3>🚫 لا توجد نتائج</h3>";
+    return;
+  }
+
+  for (const folder of data.files) {
+    // ابحث عن الصورة التي اسمها "1"
+    const imgRes = await fetch(`https://www.googleapis.com/drive/v3/files?q='${folder.id}'+in+parents+and+mimeType contains 'image/'&fields=files(id,name)&key=${apiKey}`);
+    const imgData = await imgRes.json();
+
+    let thumb = "https://via.placeholder.com/200x150?text=No+Image";
+    if (imgData.files && imgData.files.length > 0) {
+      const img1 = imgData.files.find(f => f.name.startsWith("1")) || imgData.files[0];
+      thumb = `https://lh3.googleusercontent.com/d/${img1.id}=w300`;
+    }
+
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${thumb}" alt="">
+      <div class="card-title">${folder.name}</div>
+    `;
+    card.onclick = () => openFolder(folder.id, folder.name);
+    gallery.appendChild(card);
+  }
+}
+
+async function openFolder(id, name) {
+  const res = await fetch(`https://www.googleapis.com/drive/v3/files?q='${id}'+in+parents+and+mimeType contains 'image/'&fields=files(id,name)&key=${apiKey}`);
+  const data = await res.json();
+
+  if (!data.files || data.files.length === 0) return alert("لا توجد صور داخل هذا المجلد.");
+
+  // استخدم رابط Googleusercontent بدلاً من uc
+  currentImages = data.files.map(f => `https://lh3.googleusercontent.com/d/${f.id}=w1000`);
+  currentIndex = 0;
+  document.getElementById("caption").textContent = name;
+  document.getElementById("overlayImg").src = currentImages[0];
+  document.getElementById("overlay").style.display = "flex";
+}
+
+function closeOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+function nextImage() {
+  if (currentImages.length === 0) return;
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  document.getElementById("overlayImg").src = currentImages[currentIndex];
+}
+
+function prevImage() {
+  if (currentImages.length === 0) return;
+  currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+  document.getElementById("overlayImg").src = currentImages[currentIndex];
+}
+
+listFolders();
+</script>
+
+</body>
+</html>
