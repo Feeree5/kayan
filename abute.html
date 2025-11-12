@@ -159,7 +159,13 @@ document.addEventListener('click', function(event) {
         if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
     }
+
+         window.addEventListener('pageshow', () => {
+  const m = document.getElementById('mobile-menu');
+  if (m) m.classList.add('hidden'); // استخدم فقط الكلاس hidden
+});
     </script>
 </body>
 
 </html>
+
