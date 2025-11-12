@@ -176,7 +176,12 @@ function prevImage() {
 }
 
 listFolders();
+   window.addEventListener('pageshow', () => {
+  const m = document.getElementById('mobile-menu');
+  if (m) m.classList.add('hidden'); // استخدم فقط الكلاس hidden
+});
 </script>
 
 </body>
 </html>
+
